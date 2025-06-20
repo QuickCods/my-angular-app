@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/possivel_projeto_final",
-            "baseHref": "/",
+            "baseHref": "/my-angular-app/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
