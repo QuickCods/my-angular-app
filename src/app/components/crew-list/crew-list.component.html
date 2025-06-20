@@ -1,0 +1,24 @@
+ <div class="crew-list">
+  <div class="toolbar">
+    <h2>Tripulação da Nave Aurora</h2>
+    <button (click)="createNew()">Criar Novo Membro</button>
+  </div>
+
+  <table class="crew-table">
+    <thead>
+      <tr>
+        <th>ID</th><th>Nome</th><th>Espécie</th><th>Função</th><th>Estado</th><th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of crew" [ngClass]="getEstadoClass(member.estado)">
+        <td>{{ member.id }}</td><td>{{ member.nome }}</td><td>{{ member.especie }}</td><td>{{ member.funcao }}</td><td>{{ member.estado }}</td>
+        <td class="actions">
+          <button (click)="goToDetails(member.id)">Detalhes</button>
+          <button (click)="goToEdit(member.id)">Editar</button>
+          <button (click)="deleteMember(member.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

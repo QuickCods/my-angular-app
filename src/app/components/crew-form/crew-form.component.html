@@ -1,0 +1,78 @@
+<div>
+  <h2>{{ isEditMode ? 'Editar Membro' : 'Criar Novo Membro' }}</h2>
+
+  <form class="crew-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>
+        Nome:
+        <input formControlName="nome" placeholder="Ex: Mikael Sol"/>
+        <span *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched" style="color:red;">
+          Obrigatório
+        </span>
+      </label>
+
+      <label>
+        Espécie:
+        <select formControlName="especie">
+          <option value="">Selecione</option>
+          <option *ngFor="let e of especies" [value]="e">{{ e }}</option>
+        </select>
+        <span *ngIf="form.get('especie')?.invalid && form.get('especie')?.touched" style="color:red;">
+          Obrigatório
+        </span>
+      </label>
+
+      <label>Função:
+        <input formControlName="funcao" placeholder="Ex: Oficial de Comunicações"/>
+      </label>
+
+      <label>Estado:
+        <select formControlName="estado">
+          <option *ngFor="let e of estados" [value]="e">{{ e }}</option>
+        </select>
+      </label>
+
+      <label>
+        {{ isHumanLike(form.get('especie')?.value) ? 'Data de Nascimento:' : 'Data de Criação:' }}
+    
+        <ng-container *ngIf="isHumanLike(form.get('especie')?.value); else textInput">
+          <input type="date" formControlName="dataNascimentoCriacao" />
+        </ng-container>
+    
+        <ng-template #textInput>
+          <input type="text" formControlName="dataNascimentoCriacao" placeholder="ex: Desconhecida, 345 Ciclos Estelares" />
+        </ng-template>
+      </label>
+
+      <label>Setor/Departamento:
+        <input formControlName="setor" placeholder="Ex: Engenharia, Enfermaria, Comando"/>
+      </label>
+
+      <label>Contactos de Emergência:
+        <textarea formControlName="contactosEmergencia" placeholder="Ex: Base Terra, Protocolo Médico"></textarea>
+      </label>
+
+      <label>Notas/Observações:
+        <textarea formControlName="notas" placeholder="Ex: Fluente em línguas cósmicas, comportamento agressivo..."></textarea>
+      </label>
+
+      <label>URL da Imagem/Avatar:
+        <input formControlName="avatarUrl" />
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="form.invalid">
+          {{ isEditMode ? 'Atualizar' : 'Guardar' }}
+        </button>
+        <button type="button" (click)="onCancel()">Cancelar</button>
+      </div>
+
+    </div>
+  </form>
+
+    <!-- Toast message -->
+  <div class="toast" *ngIf="showToast">
+    {{ toastMessage }}
+  </div>
+  
+</div>

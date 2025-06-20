@@ -1,0 +1,36 @@
+<div *ngIf="member" class="crew-detail">
+  <h2>Detalhes do Membro - {{ member.nome }}</h2>
+  <img [src]="member.avatarUrl || 'https://icons.veryicon.com/png/o/miscellaneous/rookie-official-icon-gallery/225-default-avatar.png'" alt="Avatar" width="150" />
+  <!-- <p><b>ID:</b> {{ member.id }}</p>
+  <p><b>Nome:</b> {{ member.nome }}</p>
+  <p><b>Espécie:</b> {{ member.especie }}</p>
+  <p><b>Função:</b> {{ member.funcao }}</p>
+  <p><b>Estado:</b> {{ member.estado }}</p>
+  <p><b>{{ member.especie.startsWith('Humano') || member.especie.startsWith('Nórdico') ? 'Data de Nascimento:' : 'Data de Criação:' }}</b> {{ member.dataNascimentoCriacao }}</p>
+  <p><b>Setor/Departamento:</b> {{ member.setor }}</p>
+  <p><b>Contactos de Emergência:</b> {{ member.contactosEmergencia }}</p>
+  <p><b>Notas/Observações:</b> {{ member.notas }}</p> -->
+
+   <dl class="details-list">
+    <dt>ID</dt><dd>{{ member.id }}</dd>
+    <dt>Nome</dt><dd>{{ member.nome }}</dd>
+    <dt>Espécie</dt><dd>{{ member.especie }}</dd>
+    <dt>Função</dt><dd>{{ member.funcao }}</dd>
+    <dt>Estado</dt><dd>{{ member.estado }}</dd>
+    <dt>{{ member.especie.startsWith('Humano') || member.especie.startsWith('Nórdico') ? 'Data de Nascimento:' : 'Data de Criação:' }}</dt>
+    <dd>{{ member.dataNascimentoCriacao }}</dd>
+    <dt>Setor/Departamento</dt><dd>{{ member.setor }}</dd>
+    <dt>Contactos de Emergência</dt><dd>{{ member.contactosEmergencia }}</dd>
+    <dt>Notas</dt><dd>{{ member.notas }}</dd>
+  </dl>
+
+  <div class="actions">
+    <button (click)="goBack()">Voltar</button>
+    <button (click)="goToEdit()">Editar</button>
+    <button (click)="deleteMember()">Eliminar</button>
+  </div>
+</div>
+
+<div class="toast" *ngIf="showToast">
+   {{ toastMessage }}
+</div>
