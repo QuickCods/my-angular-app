@@ -3,8 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    
-    "my-angular-app": {
+    "possivel_projeto_final": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
