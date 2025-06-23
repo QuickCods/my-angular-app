@@ -1,7 +1,6 @@
 <div>
-  <h2>{{ isEditMode ? 'Editar Membro' : 'Criar Novo Membro' }}</h2>
-
   <form class="crew-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2>{{ isEditMode ? 'Editar Membro' : 'Criar Novo Membro' }}</h2>
     <div class="form-group">
       <label>
         Nome:
